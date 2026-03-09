@@ -1,0 +1,2 @@
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "ingest_taxi_zones"}, "timestamp": 1771945880, "user": 1}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "build_silver_trips"}, "timestamp": 1771957577, "user": 1}

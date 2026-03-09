@@ -1,6 +1,5 @@
 # Runtime/data volumes (Docker/Postgres/Mage/pgAdmin)
 warehouse_data/
-scheduler_data/
 warehouse_ui_data/
 
 # Python cache/artifacts

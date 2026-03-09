@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: postgres
+    schema: bronze
+    tables:
+      - name: taxi_trips
+      - name: taxi_zones

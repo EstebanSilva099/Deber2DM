@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: dim_service_type
+    description: "Dimensión de tipo de servicio (yellow/green)."
+    columns:
+      - name: service_type_key
+        description: "Surrogate key de service_type."
+        tests:
+          - not_null
+          - unique
+      - name: service_type
+        description: "Nombre del tipo de servicio normalizado."
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_zone
+    description: "Dimensión de zonas TLC (LocationID, borough, zone, service_zone)."
+    columns:
+      - name: zone_key
+        description: "Key de zona (usando LocationID)."
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_date
+    description: "Dimensión de fechas basada en pickup_at."
+    columns:
+      - name: date_key
+        description: "Key YYYYMMDD."
+        tests:
+          - not_null
+          - unique
+      - name: date_day
+        description: "Fecha calendario."
+
+  - name: fact_trips
+    description: "Tabla de hechos de viajes. Grain: 1 fila = 1 viaje."
+    columns:
+      - name: trip_fact_key
+        description: "PK técnica estable (hash)."
+        tests:
+          - not_null
+          - unique
+
+      - name: service_type_key
+        description: "FK a dim_service_type."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_service_type')
+              field: service_type_key
+
+      - name: pickup_date_key
+        description: "FK a dim_date (fecha de pickup)."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+
+      - name: pu_location_key
+        description: "FK a dim_zone (pickup)."
+        tests:
+          - relationships:
+              to: ref('dim_zone')
+              field: zone_key
+
+      - name: do_location_key
+        description: "FK a dim_zone (dropoff)."
+        tests:
+          - relationships:
+              to: ref('dim_zone')
+              field: zone_key

@@ -1,0 +1,16 @@
+# https://docs.getdbt.com/docs/core/connect-data-platform/profiles.yml
+
+scheduler_transform:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: warehouse
+      user: root
+      password: root
+      port: 5432
+      dbname: postgres
+      schema: silver
+      threads: 4
+
+
