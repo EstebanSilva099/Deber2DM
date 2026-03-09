@@ -1,5 +1,6 @@
 # PSet 2 - Gold Mart con dbt + Análisis de negocio
 # Esteban Silva 00329204
+# https://github.com/EstebanSilva099/Deber2DM
 ## Descripción general del proyecto
 Este proyecto construye un pequeño data mart de viajes de taxi usando una arquitectura por capas:
 
@@ -94,16 +95,16 @@ Objetivo principal:
 ## Estructura del star schema
 
                     dim_date
-                       |
-                       |
+                       -
+                       -
 dim_service_type --- fact_trips --- dim_payment_type
-                       |
-                       |
+                       -
+                       -
                    dim_vendor
-                       |
-                       |
+                       -
+                       -
                     dim_zone
-                 /             \
+            -                   -
         pickup zone         dropoff zone
 
 ### Notas
